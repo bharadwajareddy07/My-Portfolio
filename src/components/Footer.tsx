@@ -7,22 +7,22 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#0E0611] border-t border-[#3D1B3E] py-12 px-4 sm:px-6 lg:px-8 relative">
+    <footer className="bg-[#070B14] border-t border-[#1E293B] py-12 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#3D1B3E]/60">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#1E293B]/60">
           {/* Brand & Role */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-2.5 mb-1.5">
-              <div className="w-7 h-7 rounded-lg bg-[#1F0E25] border border-[#3D1B3E] overflow-hidden flex-shrink-0">
+              <div className="w-7 h-7 rounded-lg bg-[#0D1321] border border-[#1E293B] overflow-hidden flex-shrink-0">
                 <img
                   src="/profile.jpg"
                   alt="Bharadwaj"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-lg font-bold text-[#FDF8F6]">Bharadwaj</span>
+              <span className="text-lg font-bold text-[#F8FAFC]">Bharadwaj</span>
             </div>
-            <p className="text-sm text-[#D6B8CE]">
+            <p className="text-sm text-[#94A3B8]">
               Application Developer | RAG Application Developer
             </p>
           </div>
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
               href="https://github.com/bharadwajareddy07"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-[#170A1C] border border-[#3D1B3E] text-[#D6B8CE] hover:text-[#FDF8F6] hover:border-[#FFB39A]/40 transition-colors"
+              className="p-2.5 rounded-xl bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#F8FAFC] hover:border-[#2F6BFF]/40 transition-colors"
               aria-label="GitHub Profile"
               title="GitHub"
             >
@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-[#170A1C] border border-[#3D1B3E] text-[#D6B8CE] hover:text-[#FFB39A] hover:border-[#FFB39A]/40 transition-colors"
+              className="p-2.5 rounded-xl bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#00D4FF] hover:border-[#2F6BFF]/40 transition-colors"
               aria-label="LinkedIn Profile"
               title="LinkedIn"
             >
@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
 
             <a
               href="mailto:bharadwaj.workspace@gmail.com"
-              className="p-2.5 rounded-xl bg-[#170A1C] border border-[#3D1B3E] text-[#D6B8CE] hover:text-[#FFD1C4] hover:border-[#FFB39A]/40 transition-colors"
+              className="p-2.5 rounded-xl bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#00D4FF] hover:border-[#2F6BFF]/40 transition-colors"
               aria-label="Email Address"
               title="Email"
             >
@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
             <button
               type="button"
               onClick={scrollToTop}
-              className="p-2.5 rounded-xl bg-[#170A1C] border border-[#3D1B3E] text-[#D6B8CE] hover:text-[#FFB39A] hover:border-[#FFB39A]/40 transition-colors ml-2"
+              className="p-2.5 rounded-xl bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#F8FAFC] hover:border-[#2F6BFF]/40 transition-colors ml-2"
               aria-label="Back to top"
               title="Back to top"
             >
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#93748C] font-mono">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] font-mono">
           <div>
             &copy; {new Date().getFullYear()} Bharadwaj. All rights reserved.
           </div>

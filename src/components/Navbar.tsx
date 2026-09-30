@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0E0611]/90 backdrop-blur-md border-b border-[#3D1B3E] shadow-lg shadow-black/40 py-3'
+          ? 'bg-[#070B14]/90 backdrop-blur-md border-b border-[#1E293B] shadow-lg shadow-black/30 py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -67,9 +67,9 @@ export const Navbar: React.FC = () => {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFB39A] rounded-lg p-1"
+            className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2F6BFF] rounded-lg p-1"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#1F0E25] border border-[#3D1B3E] overflow-hidden flex-shrink-0 group-hover:border-[#FFB39A]/60 transition-colors shadow-sm">
+            <div className="w-8 h-8 rounded-lg bg-[#0D1321] border border-[#1E293B] overflow-hidden flex-shrink-0 group-hover:border-[#2F6BFF]/60 transition-colors shadow-sm">
               <img
                 src="/profile.jpg"
                 alt="Bharadwaj"
@@ -77,17 +77,17 @@ export const Navbar: React.FC = () => {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold tracking-tight text-[#FDF8F6] text-sm sm:text-base group-hover:text-[#FFB39A] transition-colors leading-tight">
+              <span className="font-semibold tracking-tight text-[#F8FAFC] text-sm sm:text-base group-hover:text-[#00D4FF] transition-colors leading-tight">
                 Bharadwaj
               </span>
-              <span className="text-[10px] text-[#D6B8CE] font-mono leading-none">
+              <span className="text-[10px] text-[#94A3B8] font-mono leading-none">
                 Application &amp; RAG Developer
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-[#170A1C]/80 border border-[#3D1B3E]/90 rounded-full px-3 py-1.5 backdrop-blur-sm shadow-inner">
+          <nav className="hidden md:flex items-center gap-1 bg-[#0D1321]/70 border border-[#1E293B]/80 rounded-full px-3 py-1.5 backdrop-blur-sm shadow-inner">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
               return (
@@ -97,8 +97,8 @@ export const Navbar: React.FC = () => {
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={`px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                     isActive
-                      ? 'text-[#FFD1C4] bg-[#542A52]/80 border border-[#FFB39A]/30 shadow-sm'
-                      : 'text-[#D6B8CE] hover:text-[#FDF8F6] hover:bg-white/[0.05]'
+                      ? 'text-[#F8FAFC] bg-[#1E293B] shadow-sm'
+                      : 'text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-white/[0.04]'
                   }`}
                 >
                   {item.name}
@@ -113,9 +113,9 @@ export const Navbar: React.FC = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-lg bg-[#1F0E25] border border-[#3D1B3E] text-[#FDF8F6] hover:border-[#FFB39A]/60 hover:bg-[#2A1432] transition-all duration-200 group"
+              className="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-lg bg-[#0D1321] border border-[#1E293B] text-[#F8FAFC] hover:border-[#2F6BFF]/60 hover:bg-[#131B2E] transition-all duration-200 group"
             >
-              <FileDown className="w-3.5 h-3.5 text-[#FFB39A] group-hover:translate-y-0.5 transition-transform" />
+              <FileDown className="w-3.5 h-3.5 text-[#00D4FF] group-hover:translate-y-0.5 transition-transform" />
               <span>Resume</span>
             </a>
           </div>
@@ -126,15 +126,15 @@ export const Navbar: React.FC = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-[#1F0E25] border border-[#3D1B3E] text-[#FDF8F6]"
+              className="p-2 rounded-lg bg-[#0D1321] border border-[#1E293B] text-[#F8FAFC]"
               aria-label="Download Resume"
             >
-              <FileDown className="w-4 h-4 text-[#FFB39A]" />
+              <FileDown className="w-4 h-4 text-[#00D4FF]" />
             </a>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#1F0E25] border border-[#3D1B3E] text-[#D6B8CE] hover:text-[#FDF8F6] focus:outline-none focus:ring-2 focus:ring-[#FFB39A]"
+              className="p-2 rounded-lg bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#2F6BFF]"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -146,7 +146,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0E0611]/98 backdrop-blur-xl border-b border-[#3D1B3E] px-4 pt-3 pb-6 transition-all animate-fadeIn">
+        <div className="md:hidden bg-[#070B14]/98 backdrop-blur-xl border-b border-[#1E293B] px-4 pt-3 pb-6 transition-all animate-fadeIn">
           <div className="flex flex-col gap-1">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
@@ -157,22 +157,22 @@ export const Navbar: React.FC = () => {
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={`px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                     isActive
-                      ? 'bg-[#542A52] text-[#FFB39A]'
-                      : 'text-[#D6B8CE] hover:text-[#FDF8F6] hover:bg-white/[0.04]'
+                      ? 'bg-[#1E293B] text-[#00D4FF]'
+                      : 'text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-white/[0.04]'
                   }`}
                 >
                   {item.name}
                 </a>
               );
             })}
-            <div className="pt-3 border-t border-[#3D1B3E] mt-2 flex flex-col gap-2">
+            <div className="pt-3 border-t border-[#1E293B] mt-2 flex flex-col gap-2">
               <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold rounded-lg bg-[#542A52] text-[#FFD1C4] border border-[#FFB39A]/40 hover:bg-[#6E376B] transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold rounded-lg bg-[#2F6BFF] text-white hover:bg-[#2557D6] transition-colors"
               >
-                <FileDown className="w-4 h-4 text-[#FFB39A]" />
+                <FileDown className="w-4 h-4" />
                 View Resume (PDF)
               </a>
             </div>

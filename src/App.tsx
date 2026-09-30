@@ -12,7 +12,7 @@ import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#0E0611] text-[#FDF8F6] selection:bg-[#542A52] selection:text-[#FFB39A]">
+    <div className="min-h-screen bg-[#070B14] text-[#F8FAFC] selection:bg-[#2F6BFF]/30 selection:text-[#00D4FF]">
       {/* Sticky Top Navigation */}
       <Navbar />
 

@@ -8,19 +8,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0E0611',
-        'background-secondary': '#170A1C',
-        'background-card': '#1F0E25',
-        'surface-elevated': '#2A1432',
-        border: '#3D1B3E',
-        'border-light': '#5A2A5C',
-        primary: '#FDF8F6',
-        secondary: '#D6B8CE',
-        muted: '#93748C',
-        'accent-plum': '#542A52',
-        'accent-plum-light': '#7E3D7B',
-        'accent-peach': '#FFB39A',
-        'accent-peach-light': '#FFD1C4',
+        background: '#070B14',
+        'background-secondary': '#0D1321',
+        'background-card': '#111827',
+        'surface-elevated': '#162032',
+        border: '#1E293B',
+        'border-light': '#334155',
+        primary: '#F8FAFC',
+        secondary: '#94A3B8',
+        'accent-blue': '#2F6BFF',
+        'accent-cyan': '#00D4FF',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
@@ -36,6 +33,10 @@ export default {
           '100%': { opacity: 0.8 },
         },
       },
+      backgroundImage: {
+        'radial-gradient': 'radial-gradient(circle at 50% 0%, rgba(47, 107, 255, 0.12), transparent 50%)',
+        'radial-gradient-cyan': 'radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.08), transparent 40%)',
+      }
     },
   },
   plugins: [],
