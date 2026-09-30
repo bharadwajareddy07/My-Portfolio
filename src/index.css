@@ -13,24 +13,24 @@
   }
 
   body {
-    background-color: #070B14;
-    color: #F8FAFC;
+    background-color: #0E0611;
+    color: #FDF8F6;
     overflow-x: hidden;
   }
 
-  /* Custom scrollbar */
+  /* Custom Plum & Peach scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #070B14;
+    background: #0E0611;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1E293B;
+    background: #3D1B3E;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #334155;
+    background: #542A52;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -49,20 +49,20 @@
   .bg-grid-pattern {
     background-size: 32px 32px;
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255, 179, 154, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 179, 154, 0.04) 1px, transparent 1px);
   }
 
   .bg-dots-pattern {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 179, 154, 0.08) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
   .glass-card {
-    background: rgba(13, 19, 33, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(23, 10, 28, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 179, 154, 0.1);
   }
 
   .glass-card-hover {
@@ -70,20 +70,20 @@
   }
 
   .glass-card-hover:hover {
-    background: rgba(19, 27, 46, 0.85);
-    border-color: rgba(47, 107, 255, 0.35);
+    background: rgba(31, 14, 37, 0.88);
+    border-color: rgba(255, 179, 154, 0.35);
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(47, 107, 255, 0.15);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6), 0 0 22px -4px rgba(84, 42, 82, 0.35);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #F8FAFC 0%, #94A3B8 100%);
+    background: linear-gradient(135deg, #FDF8F6 0%, #D6B8CE 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-accent {
-    background: linear-gradient(135deg, #00D4FF 0%, #2F6BFF 100%);
+    background: linear-gradient(135deg, #FFB39A 0%, #FFD1C4 50%, #B85DAF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
