@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { GraduationCap, Code2, Bot, Layers, Sparkles, MapPin, Terminal } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+import { GraduationCap, Code2, Bot, Layers, Sparkles, MapPin, Terminal, Code } from 'lucide-react';
 
 const stats = [
   {
@@ -41,11 +41,28 @@ const pillars = [
   { name: 'Vector Databases & SQL', icon: Sparkles },
 ];
 
+const floatBadge1: Variants = {
+  initial: { y: 0 },
+  animate: {
+    y: [-4, 4, -4],
+    transition: { duration: 4.8, repeat: Infinity, ease: 'easeInOut' },
+  },
+};
+
+const floatBadge2: Variants = {
+  initial: { y: 0 },
+  animate: {
+    y: [4, -4, 4],
+    transition: { duration: 5.4, repeat: Infinity, ease: 'easeInOut', delay: 0.6 },
+  },
+};
+
 export const About: React.FC = () => {
   return (
     <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#070B14]">
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-[#2F6BFF]/6 blur-[140px] rounded-full pointer-events-none" />
+      {/* Ambient Background Glow */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#2F6BFF]/8 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-[#00D4FF]/6 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Heading */}
@@ -67,7 +84,7 @@ export const About: React.FC = () => {
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left: Summary Profile Card */}
+          {/* Left: Enhanced Prominent Profile Card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -75,32 +92,64 @@ export const About: React.FC = () => {
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="lg:col-span-5 flex flex-col items-center"
           >
-            <div className="relative w-full max-w-sm">
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#2F6BFF]/20 via-transparent to-[#00D4FF]/20 blur-xl opacity-60 pointer-events-none" />
+            <div className="relative w-full max-w-md">
+              {/* Outer Ambient Glow Ring */}
+              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-[#2F6BFF]/25 via-[#00D4FF]/20 to-[#2F6BFF]/25 blur-2xl opacity-75 pointer-events-none" />
               
-              <div className="relative rounded-3xl bg-[#0D1321]/90 border border-[#1E293B] p-6 shadow-xl backdrop-blur-md text-center flex flex-col items-center">
-                {/* Round Avatar with Dual Glow */}
-                <div className="relative w-44 h-44 sm:w-48 sm:h-48 mb-5">
-                  <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#2F6BFF] to-[#00D4FF] opacity-70 blur-[1px]" />
-                  <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-[#070B14] shadow-inner bg-[#070B14]">
+              {/* Glassmorphic Profile Card */}
+              <div className="relative rounded-3xl bg-[#0D1321]/90 border border-[#1E293B] hover:border-[#2F6BFF]/50 p-6 sm:p-8 shadow-2xl backdrop-blur-xl text-center flex flex-col items-center transition-colors duration-300">
+                
+                {/* Large Prominent Circular Portrait */}
+                <div className="relative w-56 h-56 sm:w-64 sm:h-64 mb-6">
+                  {/* Glowing Neon Cyber Ring */}
+                  <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-[#2F6BFF] via-[#00D4FF] to-[#2F6BFF] opacity-80 blur-[2px] animate-pulse" />
+                  
+                  {/* Portrait Mask */}
+                  <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-[#070B14] shadow-2xl bg-[#070B14]">
                     <img
                       src="/profile.jpg"
                       alt="Bharadwaj"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover scale-[1.08] transition-transform duration-500 hover:scale-115"
                     />
                   </div>
-                  <div className="absolute -bottom-1 right-1 px-3 py-1 bg-[#0D1321] border border-[#2F6BFF]/60 rounded-full text-xs font-mono text-[#00D4FF] shadow-lg flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D4FF]" />
-                    CSE Student
+
+                  {/* Corner Status Pill */}
+                  <div className="absolute -bottom-2 right-2 px-3.5 py-1 bg-[#0D1321] border border-emerald-500/50 rounded-full text-xs font-mono text-emerald-400 shadow-xl flex items-center gap-1.5 backdrop-blur-md">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>CSE Student</span>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-[#F8FAFC]">Bharadwaj</h3>
-                <p className="text-xs text-[#00D4FF] font-mono mt-1 font-medium">
+                {/* Floating Micro Tech Badges */}
+                <motion.div
+                  variants={floatBadge1}
+                  initial="initial"
+                  animate="animate"
+                  className="absolute -top-3 -right-2 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0D1321]/95 border border-[#00D4FF]/40 text-[#00D4FF] text-xs font-mono shadow-xl backdrop-blur-md"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>RAG Systems</span>
+                </motion.div>
+
+                <motion.div
+                  variants={floatBadge2}
+                  initial="initial"
+                  animate="animate"
+                  className="absolute bottom-20 -left-3 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0D1321]/95 border border-[#2F6BFF]/40 text-[#F8FAFC] text-xs font-mono shadow-xl backdrop-blur-md"
+                >
+                  <Code className="w-3.5 h-3.5 text-[#2F6BFF]" />
+                  <span>React &bull; APIs</span>
+                </motion.div>
+
+                {/* Identity Text */}
+                <h3 className="text-2xl font-bold text-[#F8FAFC] tracking-tight">
+                  Bharadwaj
+                </h3>
+                <p className="text-xs sm:text-sm text-[#00D4FF] font-mono mt-1 font-medium">
                   Application Developer &bull; RAG Developer
                 </p>
 
-                <div className="mt-4 pt-4 border-t border-[#1E293B] w-full flex items-center justify-center gap-2 text-xs text-[#94A3B8]">
+                <div className="mt-5 pt-4 border-t border-[#1E293B]/90 w-full flex items-center justify-center gap-2 text-xs text-[#94A3B8]">
                   <MapPin className="w-3.5 h-3.5 text-[#00D4FF]" />
                   <span>Computer Science Engineering Student</span>
                 </div>
