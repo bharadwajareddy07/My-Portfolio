@@ -54,32 +54,6 @@ export const projectsData: ProjectDetail[] = [
     liveDemoUrl: '#'
   },
   {
-    id: 'aqua-feed-system',
-    title: 'Aqua Feed Performance Management System',
-    subtitle: 'Aquaculture Operations & Farm Data Management Web Application',
-    category: 'Web Application',
-    badge: 'Application Development',
-    accentColor: '#00D4FF',
-    description:
-      'A practical web application designed to help aquaculture farms organize farmer records, field agent visits, daily feeding schedules, and operational farm data in a unified dashboard.',
-    problem:
-      'Aquaculture farm management often relies on manual logs and fragmented notes, making it difficult to maintain consistent feeding records, visit logs, and pond tracking across multiple farms.',
-    solution:
-      'Developed a responsive application with interactive management interfaces for agents and farm coordinators to log visit data, record daily feeding, and monitor pond operational status.',
-    architecture:
-      'React Web Interface → API Layer → Relational Database (SQL) for persistent farm records and operational data calculation.',
-    technologies: ['React', 'JavaScript', 'Python', 'APIs', 'SQL', 'HTML5', 'CSS'],
-    keyFeatures: [
-      'Agent farm-visit workflow and record logging',
-      'Farmer and pond management views',
-      'Daily feeding schedules and data entry forms',
-      'Farm data summaries and operational reports',
-      'Responsive, user-friendly interface for mobile and desktop'
-    ],
-    githubUrl: 'https://github.com/bharadwajareddy07/My-Portfolio',
-    liveDemoUrl: '#'
-  },
-  {
     id: 'legal-metrology-app',
     title: 'Legal Metrology Application',
     subtitle: 'Digital Inspection & Workflow Management Application',
@@ -101,6 +75,32 @@ export const projectsData: ProjectDetail[] = [
       'Structured compliance summary generation',
       'Location coordinate logging support',
       'Clean dashboard navigation for inspection officers'
+    ],
+    githubUrl: 'https://github.com/bharadwajareddy07/My-Portfolio',
+    liveDemoUrl: '#'
+  },
+  {
+    id: 'aqua-feed-system',
+    title: 'Aqua Feed Performance Management System',
+    subtitle: 'Aquaculture Operations & Farm Data Management Web Application',
+    category: 'Web Application',
+    badge: 'Application Development',
+    accentColor: '#00D4FF',
+    description:
+      'A practical web application designed to help aquaculture farms organize farmer records, field agent visits, daily feeding schedules, and operational farm data in a unified dashboard.',
+    problem:
+      'Aquaculture farm management often relies on manual logs and fragmented notes, making it difficult to maintain consistent feeding records, visit logs, and pond tracking across multiple farms.',
+    solution:
+      'Developed a responsive application with interactive management interfaces for agents and farm coordinators to log visit data, record daily feeding, and monitor pond operational status.',
+    architecture:
+      'React Web Interface → API Layer → Relational Database (SQL) for persistent farm records and operational data calculation.',
+    technologies: ['React', 'JavaScript', 'Python', 'APIs', 'SQL', 'HTML5', 'CSS'],
+    keyFeatures: [
+      'Agent farm-visit workflow and record logging',
+      'Farmer and pond management views',
+      'Daily feeding schedules and data entry forms',
+      'Farm data summaries and operational reports',
+      'Responsive, user-friendly interface for mobile and desktop'
     ],
     githubUrl: 'https://github.com/bharadwajareddy07/My-Portfolio',
     liveDemoUrl: '#'
