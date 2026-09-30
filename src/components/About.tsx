@@ -38,13 +38,16 @@ const pillars = [
   { name: 'Web Technologies & React', icon: Layers },
   { name: 'APIs & Integration', icon: Terminal },
   { name: 'RAG Architecture & LangChain', icon: Bot },
-  { name: 'Vector Databases', icon: Sparkles },
+  { name: 'Vector Databases & SQL', icon: Sparkles },
 ];
 
 export const About: React.FC = () => {
   return (
     <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#070B14]">
-      <div className="max-w-7xl mx-auto">
+      {/* Subtle Background Glow */}
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-[#2F6BFF]/6 blur-[140px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -56,10 +59,10 @@ export const About: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1321] border border-[#1E293B] text-xs font-mono text-[#00D4FF] mb-3">
             <span>&lt;about me /&gt;</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#F8FAFC]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#F8FAFC]">
             About Me
           </h2>
-          <div className="w-12 h-1 bg-[#2F6BFF] rounded-full mt-3" />
+          <div className="w-12 h-1 bg-gradient-to-r from-[#00D4FF] to-[#2F6BFF] rounded-full mt-3" />
         </motion.div>
 
         {/* Content Grid */}
@@ -75,24 +78,29 @@ export const About: React.FC = () => {
             <div className="relative w-full max-w-sm">
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#2F6BFF]/20 via-transparent to-[#00D4FF]/20 blur-xl opacity-60 pointer-events-none" />
               
-              <div className="relative rounded-2xl bg-[#0D1321] border border-[#1E293B] p-6 shadow-xl text-center">
-                <div className="relative mx-auto w-44 h-44 sm:w-52 sm:h-52 mb-5">
-                  <img
-                    src="/profile.jpg"
-                    alt="Bharadwaj"
-                    className="w-full h-full object-cover rounded-2xl border border-[#1E293B] shadow-inner"
-                  />
-                  <div className="absolute -bottom-2 -right-2 px-3 py-1 bg-[#131B2E] border border-[#2F6BFF]/50 rounded-lg text-xs font-mono text-[#00D4FF] shadow-lg">
-                    CS Student
+              <div className="relative rounded-3xl bg-[#0D1321]/90 border border-[#1E293B] p-6 shadow-xl backdrop-blur-md text-center flex flex-col items-center">
+                {/* Round Avatar with Dual Glow */}
+                <div className="relative w-44 h-44 sm:w-48 sm:h-48 mb-5">
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#2F6BFF] to-[#00D4FF] opacity-70 blur-[1px]" />
+                  <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-[#070B14] shadow-inner bg-[#070B14]">
+                    <img
+                      src="/profile.jpg"
+                      alt="Bharadwaj"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -bottom-1 right-1 px-3 py-1 bg-[#0D1321] border border-[#2F6BFF]/60 rounded-full text-xs font-mono text-[#00D4FF] shadow-lg flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D4FF]" />
+                    CSE Student
                   </div>
                 </div>
 
                 <h3 className="text-xl font-bold text-[#F8FAFC]">Bharadwaj</h3>
-                <p className="text-sm text-[#94A3B8] mt-1 font-medium">
+                <p className="text-xs text-[#00D4FF] font-mono mt-1 font-medium">
                   Application Developer &bull; RAG Developer
                 </p>
 
-                <div className="mt-4 pt-4 border-t border-[#1E293B] flex items-center justify-center gap-2 text-xs text-[#94A3B8]">
+                <div className="mt-4 pt-4 border-t border-[#1E293B] w-full flex items-center justify-center gap-2 text-xs text-[#94A3B8]">
                   <MapPin className="w-3.5 h-3.5 text-[#00D4FF]" />
                   <span>Computer Science Engineering Student</span>
                 </div>
@@ -110,20 +118,20 @@ export const About: React.FC = () => {
           >
             <div className="prose prose-invert max-w-none text-[#94A3B8] space-y-4 text-base sm:text-lg leading-relaxed">
               <p className="text-[#F8FAFC] font-normal">
-                I'm a Computer Science student who enjoys building applications and learning how different technologies work together. My current focus is application development, web technologies, APIs, and Retrieval-Augmented Generation (RAG).
+                I'm a Computer Science student who enjoys building applications and exploring how modern software architectures solve real-world problems. My primary technical focus is web application engineering, RESTful APIs, and Retrieval-Augmented Generation (RAG).
               </p>
               <p>
-                I believe in understanding software by implementing practical projects: creating modular frontend interfaces with React, integrating backend logic and APIs in Python, handling data with SQL, and exploring vector databases with LangChain to build context-aware document applications.
+                I believe in understanding software by implementing practical projects: creating reactive frontend interfaces with React, integrating backend logic and APIs in Python, managing relational data in SQL, and implementing vector search with LangChain to build context-aware document applications.
               </p>
               <p>
-                My goal is to continue sharpening my software engineering fundamentals while building reliable, clean, and useful applications.
+                My goal is to continuously sharpen my software engineering fundamentals while contributing to reliable, well-engineered, and impactful software applications.
               </p>
             </div>
 
             {/* Interest Badges */}
             <div className="pt-2">
               <h4 className="text-xs font-mono uppercase tracking-wider text-[#64748B] mb-3">
-                Focus Areas
+                Core Domains
               </h4>
               <div className="flex flex-wrap gap-2.5">
                 {pillars.map((item, idx) => {
@@ -135,7 +143,7 @@ export const About: React.FC = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.08 * idx }}
-                      className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0D1321] border border-[#1E293B] text-xs font-medium text-[#F8FAFC] hover:border-[#2F6BFF]/40 hover:bg-[#131B2E] transition-all cursor-default"
+                      className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0D1321] border border-[#1E293B] text-xs font-medium text-[#F8FAFC] hover:border-[#00D4FF]/40 hover:bg-[#131B2E] transition-all cursor-default"
                     >
                       <Icon className="w-3.5 h-3.5 text-[#00D4FF]" />
                       <span>{item.name}</span>
