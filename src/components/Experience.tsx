@@ -1,42 +1,77 @@
 import React from 'react';
-import { Calendar, Code, Trophy, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Calendar, Code, Trophy, CheckCircle2, Cpu } from 'lucide-react';
 import { practicalExperienceData } from '../data/experience';
 
 export const Experience: React.FC = () => {
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#070B14] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1321] border border-[#1E293B] text-xs font-mono text-[#00D4FF] mb-3">
-            <span>&lt;timeline /&gt;</span>
+            <span>&lt;practical trajectory /&gt;</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#F8FAFC]">
-            Experience &amp; Practical Work
+            Experience &amp; Activities
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#94A3B8] max-w-xl">
-            Project-based engineering, end-to-end software implementations, and hackathon technical initiatives.
+            Project-based engineering implementations, hackathon initiatives, and technical learning workflows.
           </p>
           <div className="w-12 h-1 bg-[#2F6BFF] rounded-full mt-4" />
-        </div>
+        </motion.div>
 
-        {/* Timeline Container */}
-        <div className="relative border-l border-[#1E293B] ml-4 md:ml-32 space-y-12">
-          {practicalExperienceData.map((item) => {
-            const isHackathon = item.type === 'Hackathon';
+        {/* Timeline Container with Self-Drawing Vertical Line */}
+        <div className="relative ml-4 md:ml-28 space-y-12">
+          {/* Animated SVG / Div line that draws itself on scroll */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+            style={{ originY: 0 }}
+            className="absolute left-0 top-3 bottom-3 w-[2px] bg-gradient-to-b from-[#2F6BFF] via-[#00D4FF] to-[#1E293B]"
+          />
+
+          {practicalExperienceData.map((item, index) => {
+            const isHackathon = item.type === 'Hackathon Initiative';
             return (
-              <div key={item.id} className="relative pl-8 md:pl-10 group">
-                {/* Timeline Node Icon */}
-                <div className="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-[#0D1321] border-2 border-[#2F6BFF] flex items-center justify-center text-[#00D4FF] group-hover:scale-110 group-hover:border-[#00D4FF] transition-all">
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="relative pl-8 md:pl-10 group"
+              >
+                {/* Timeline Node Icon with Pop-in spring animation */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20, delay: index * 0.15 + 0.2 }}
+                  className="absolute -left-[15px] top-1 w-8 h-8 rounded-full bg-[#0D1321] border-2 border-[#2F6BFF] flex items-center justify-center text-[#00D4FF] group-hover:scale-110 group-hover:border-[#00D4FF] transition-all shadow-md shadow-[#2F6BFF]/20"
+                >
                   {isHackathon ? (
                     <Trophy className="w-3.5 h-3.5" />
-                  ) : (
+                  ) : item.type === 'Project Engineering' ? (
                     <Code className="w-3.5 h-3.5" />
+                  ) : (
+                    <Cpu className="w-3.5 h-3.5" />
                   )}
-                </div>
+                </motion.div>
 
                 {/* Experience Card */}
-                <div className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-6 sm:p-8 hover:border-[#2F6BFF]/40 transition-all duration-200 shadow-lg">
+                <motion.div
+                  whileHover={{ y: -3, borderColor: 'rgba(47, 107, 255, 0.45)' }}
+                  className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-6 sm:p-8 transition-all duration-200 shadow-xl"
+                >
                   {/* Top Meta Bar */}
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <div className="flex items-center gap-2.5">
@@ -44,12 +79,12 @@ export const Experience: React.FC = () => {
                         {item.type}
                       </span>
                       <span className="text-xs font-semibold text-[#94A3B8]">
-                        {item.organizationOrContext}
+                        {item.context}
                       </span>
                     </div>
 
                     <div className="flex items-center gap-1.5 text-xs font-mono text-[#64748B]">
-                      <Calendar className="w-3.5 h-3.5" />
+                      <Calendar className="w-3.5 h-3.5 text-[#2F6BFF]" />
                       <span>{item.period}</span>
                     </div>
                   </div>
@@ -66,10 +101,10 @@ export const Experience: React.FC = () => {
 
                   {/* Bullet Highlights */}
                   <div className="space-y-2.5 mb-6">
-                    {item.bullets.map((bullet, bIdx) => (
-                      <div key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#94A3B8]">
+                    {item.highlights.map((highlight, hIdx) => (
+                      <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#94A3B8]">
                         <CheckCircle2 className="w-4 h-4 text-[#2F6BFF] mt-0.5 shrink-0" />
-                        <span className="leading-normal">{bullet}</span>
+                        <span className="leading-normal">{highlight}</span>
                       </div>
                     ))}
                   </div>
@@ -85,8 +120,8 @@ export const Experience: React.FC = () => {
                       </span>
                     ))}
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             );
           })}
         </div>

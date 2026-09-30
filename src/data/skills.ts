@@ -1,77 +1,52 @@
+export interface SkillItem {
+  name: string;
+  category: string;
+  tag: string;
+  description: string;
+}
+
 export interface SkillCategory {
+  id: string;
   title: string;
   description: string;
   iconName: string;
-  skills: {
-    name: string;
-    level?: string;
-    description?: string;
-  }[];
+  skills: SkillItem[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: 'Programming Languages',
-    description: 'Core languages used for algorithms, systems, and full-stack development',
+    id: 'programming',
+    title: 'Programming',
+    description: 'Core languages used for building applications, backend scripts, and data handling.',
     iconName: 'Code2',
     skills: [
-      { name: 'Python', description: 'Data structures, backend APIs, AI/ML pipelines' },
-      { name: 'Java', description: 'Object-oriented programming, core CS fundamentals' },
-      { name: 'TypeScript', description: 'Type-safe scalable application development' },
-      { name: 'JavaScript', description: 'ES6+, asynchronous programming, DOM APIs' },
-      { name: 'SQL', description: 'Relational querying, schema design, joins & indexing' }
+      { name: 'Python', category: 'Programming', tag: 'Core', description: 'Application logic, data processing, and RAG script development' },
+      { name: 'JavaScript', category: 'Programming', tag: 'Web', description: 'Client-side scripting, DOM interaction, and asynchronous operations' },
+      { name: 'C', category: 'Programming', tag: 'Systems', description: 'Programming fundamentals, memory concepts, and algorithmic problem solving' },
+      { name: 'SQL', category: 'Programming', tag: 'Database', description: 'Relational data querying, data filtering, and schema operations' }
     ]
   },
   {
-    title: 'Frontend Development',
-    description: 'Modern component-driven web architectures and responsive interfaces',
+    id: 'web-development',
+    title: 'Web Development',
+    description: 'Frontend and web technologies for building interactive, responsive user interfaces.',
     iconName: 'Layout',
     skills: [
-      { name: 'React', description: 'Hooks, state management, modern component patterns' },
-      { name: 'Next.js', description: 'Server components, routing, SSR/SSG workflows' },
-      { name: 'Tailwind CSS', description: 'Utility-first styling, custom design systems' },
-      { name: 'HTML5', description: 'Semantic markup, accessibility (a11y), SEO' },
-      { name: 'CSS3', description: 'Flexbox, CSS Grid, responsive design, animations' }
+      { name: 'HTML5', category: 'Web Development', tag: 'Markup', description: 'Semantic structure, accessibility, and modern web standards' },
+      { name: 'CSS', category: 'Web Development', tag: 'Styling', description: 'Responsive layouts, Flexbox, Grid, and visual design' },
+      { name: 'React', category: 'Web Development', tag: 'UI Library', description: 'Component-based architecture, state management, and interactive UIs' },
+      { name: 'APIs', category: 'Web Development', tag: 'Integration', description: 'Connecting frontend interfaces with backend services and REST endpoints' }
     ]
   },
   {
-    title: 'Backend Development',
-    description: 'High-performance API construction and microservice patterns',
-    iconName: 'Server',
-    skills: [
-      { name: 'FastAPI', description: 'Asynchronous Python REST APIs, Pydantic validation' }
-    ]
-  },
-  {
-    title: 'AI & Machine Learning',
-    description: 'Generative AI architectures, vector retrieval, and intelligent systems',
+    id: 'rag-application-development',
+    title: 'RAG Application Development',
+    description: 'Architectures and toolchains for building context-aware, document-grounded applications.',
     iconName: 'Cpu',
     skills: [
-      { name: 'Machine Learning', description: 'Supervised/unsupervised models, evaluation metrics' },
-      { name: 'RAG Architecture', description: 'Retrieval-augmented generation pipelines' },
-      { name: 'LangChain', description: 'LLM orchestration, prompt chains, document loaders' },
-      { name: 'Embeddings', description: 'High-dimensional semantic vector representations' },
-      { name: 'Vector Databases', description: 'ChromaDB, similarity indexing & vector search' }
-    ]
-  },
-  {
-    title: 'Databases & Storage',
-    description: 'Relational data modeling, cloud datastores, and query optimization',
-    iconName: 'Database',
-    skills: [
-      { name: 'PostgreSQL', description: 'ACID compliance, relational schemas, indexing' },
-      { name: 'Supabase', description: 'Backend-as-a-service, PostgreSQL, Auth & Realtime' },
-      { name: 'MySQL', description: 'Relational database management, stored procedures' }
-    ]
-  },
-  {
-    title: 'Developer Tools & Workflow',
-    description: 'Essential developer tooling for version control and development speed',
-    iconName: 'Wrench',
-    skills: [
-      { name: 'Git', description: 'Branching strategies, version tracking, merge workflows' },
-      { name: 'GitHub', description: 'Collaboration, pull requests, issue tracking, CI/CD basics' },
-      { name: 'VS Code', description: 'Primary IDE, debugging, extension ecosystem' }
+      { name: 'RAG Architecture', category: 'RAG / AI App', tag: 'Architecture', description: 'End-to-end retrieval-augmented generation workflow design' },
+      { name: 'LangChain', category: 'RAG / AI App', tag: 'Framework', description: 'Document loading, text chunking, and prompt orchestration' },
+      { name: 'Vector Databases', category: 'RAG / AI App', tag: 'Storage', description: 'Vector embeddings indexing, similarity search, and retrieval' }
     ]
   }
 ];

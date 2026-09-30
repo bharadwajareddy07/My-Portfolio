@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Send, CheckCircle2, Copy, Check, MessageSquare } from 'lucide-react';
 
 export const Contact: React.FC = () => {
@@ -21,7 +22,6 @@ export const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Build mailto URI as direct reliable fallback
     const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
@@ -37,37 +37,52 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#070B14]">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#070B14] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1321] border border-[#1E293B] text-xs font-mono text-[#00D4FF] mb-3">
             <span>&lt;get in touch /&gt;</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#F8FAFC]">
-            Contact Me
+            Let's Build Something
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#94A3B8] max-w-xl">
-            Have an internship opening, software project, or technical question? Feel free to reach out.
+            Have an application project, RAG use case, or internship opportunity? I'd love to connect.
           </p>
           <div className="w-12 h-1 bg-[#2F6BFF] rounded-full mt-4" />
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Left Column: Direct Channels */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="lg:col-span-5 flex flex-col justify-between space-y-6"
+          >
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-[#F8FAFC]">
-                Let's discuss opportunities
+                Direct Contact Channels
               </h3>
               <p className="text-sm text-[#94A3B8] leading-relaxed">
-                I am actively seeking software development &amp; AI internships. I am eager to join high-caliber teams, take on technical challenges, and ship quality features.
+                Feel free to email me directly or explore my open-source work on GitHub. I respond promptly to inquiries.
               </p>
 
               {/* Direct Info Cards */}
               <div className="space-y-3 pt-2">
                 {/* Email item */}
-                <div className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between">
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between"
+                >
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-[#131B2E] border border-[#1E293B] flex items-center justify-center text-[#00D4FF]">
                       <Mail className="w-5 h-5" />
@@ -86,8 +101,8 @@ export const Contact: React.FC = () => {
                     type="button"
                     onClick={handleCopyEmail}
                     className="p-2 rounded-lg bg-[#070B14] border border-[#1E293B] text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
-                    title="Copy Email"
-                    aria-label="Copy Email"
+                    title="Copy Email Address"
+                    aria-label="Copy Email Address"
                   >
                     {copiedEmail ? (
                       <Check className="w-4 h-4 text-emerald-400" />
@@ -95,14 +110,15 @@ export const Contact: React.FC = () => {
                       <Copy className="w-4 h-4" />
                     )}
                   </button>
-                </div>
+                </motion.div>
 
                 {/* GitHub item */}
-                <a
-                  href="https://github.com/Bharadwaj-source"
+                <motion.a
+                  whileHover={{ y: -2 }}
+                  href="https://github.com/bharadwajareddy07"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between hover:border-[#2F6BFF]/40 transition-colors group"
+                  className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between hover:border-[#2F6BFF]/40 transition-colors group block"
                 >
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-[#131B2E] border border-[#1E293B] flex items-center justify-center text-[#F8FAFC] group-hover:text-[#00D4FF] transition-colors">
@@ -111,18 +127,19 @@ export const Contact: React.FC = () => {
                     <div>
                       <div className="text-[11px] font-mono text-[#64748B]">GITHUB</div>
                       <div className="text-xs sm:text-sm font-medium text-[#F8FAFC]">
-                        github.com/Bharadwaj-source
+                        github.com/bharadwajareddy07
                       </div>
                     </div>
                   </div>
-                </a>
+                </motion.a>
 
                 {/* LinkedIn item */}
-                <a
+                <motion.a
+                  whileHover={{ y: -2 }}
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between hover:border-[#2F6BFF]/40 transition-colors group"
+                  className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between hover:border-[#2F6BFF]/40 transition-colors group block"
                 >
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-[#131B2E] border border-[#1E293B] flex items-center justify-center text-[#00D4FF]">
@@ -135,19 +152,25 @@ export const Contact: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </motion.a>
               </div>
             </div>
 
             {/* Quick response badge */}
             <div className="rounded-xl bg-[#0D1321]/60 border border-[#1E293B] p-3 flex items-center gap-2.5 text-xs text-[#94A3B8]">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span>Fast response time &bull; Typically within 24 hours</span>
+              <span>Open to internship opportunities &bull; Quick response</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact Form */}
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+            className="lg:col-span-7"
+          >
             <div className="rounded-3xl bg-[#0D1321] border border-[#1E293B] p-6 sm:p-8 shadow-xl">
               <div className="flex items-center gap-2 text-xs font-mono text-[#00D4FF] mb-6">
                 <MessageSquare className="w-4 h-4" />
@@ -155,16 +178,20 @@ export const Contact: React.FC = () => {
               </div>
 
               {submitted && (
-                <div className="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-3 text-xs text-emerald-300">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-3 text-xs text-emerald-300"
+                >
                   <CheckCircle2 className="w-5 h-5 shrink-0" />
-                  <span>Your email client has been prepared with your message. Thank you for reaching out!</span>
-                </div>
+                  <span>Your email client has been prepared with your message. Thank you!</span>
+                </motion.div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase">
-                    Your Name
+                    Name
                   </label>
                   <input
                     type="text"
@@ -173,14 +200,14 @@ export const Contact: React.FC = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="e.g. Alex Rivera"
+                    placeholder="Your Name"
                     className="w-full px-4 py-3 rounded-xl bg-[#070B14] border border-[#1E293B] text-sm text-[#F8FAFC] placeholder-[#64748B] focus:outline-none focus:border-[#2F6BFF] focus:ring-1 focus:ring-[#2F6BFF] transition-all"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase">
-                    Your Email
+                    Email
                   </label>
                   <input
                     type="email"
@@ -189,7 +216,7 @@ export const Contact: React.FC = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="alex@company.com"
+                    placeholder="your.email@example.com"
                     className="w-full px-4 py-3 rounded-xl bg-[#070B14] border border-[#1E293B] text-sm text-[#F8FAFC] placeholder-[#64748B] focus:outline-none focus:border-[#2F6BFF] focus:ring-1 focus:ring-[#2F6BFF] transition-all"
                   />
                 </div>
@@ -210,16 +237,18 @@ export const Contact: React.FC = () => {
                   />
                 </div>
 
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                   type="submit"
                   className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#2F6BFF] hover:bg-[#2557D6] text-white text-sm font-semibold transition-all shadow-lg shadow-[#2F6BFF]/25 hover:shadow-[#2F6BFF]/35 group"
                 >
                   <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   <span>Send Message</span>
-                </button>
+                </motion.button>
               </form>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

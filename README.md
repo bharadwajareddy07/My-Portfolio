@@ -1,23 +1,22 @@
-# Bharadwaj — Developer Portfolio
+# Bharadwaj Reddy — Developer Portfolio
 
 A modern, responsive, and developer-tailored portfolio website built for internship and software engineering applications.
 
-![Portfolio Preview](/profile.jpg)
+![Portfolio Profile](/profile.jpg)
 
 ## 🚀 Tech Stack
 
 - **Framework:** React 19 + TypeScript
 - **Bundler / Tooling:** Vite
-- **Styling:** Tailwind CSS (Dark theme aesthetic)
+- **Styling:** Tailwind CSS (Dark professional aesthetic)
 - **Icons:** Lucide React
-- **Animations:** Lightweight transitions & CSS / Framer Motion
 - **Hosting:** Ready for 1-click deployment on [Vercel](https://vercel.com)
 
 ---
 
 ## 🎨 Design System & Palette
 
-- **Background:** `#070B14`
+- **Background:** `#070B14` (Deep navy / near-black)
 - **Secondary Background:** `#0D1321`
 - **Primary Text:** `#F8FAFC`
 - **Secondary Text:** `#94A3B8`
@@ -34,11 +33,11 @@ src/
 ├── assets/             # Assets and images
 ├── components/         # Modular UI Components
 │   ├── Navbar.tsx      # Sticky navigation with mobile drawer & active spy
-│   ├── Hero.tsx        # Hero section with avatar, status badge, & CTAs
-│   ├── About.tsx       # About Me, focus areas, and verified statistics
-│   ├── Skills.tsx      # Categorized skill badges (Languages, Frontend, Backend, AI/ML, DB, Tools)
-│   ├── Projects.tsx    # Centerpiece showcase with interactive UI & RAG pipeline
+│   ├── Hero.tsx        # Hero section with headline, status badge, & CTAs
+│   ├── About.tsx       # About Me, focus domains, and verified statistics
+│   ├── Skills.tsx      # Categorized skill badges (Languages, Frontend, Backend, AI/ML, Data, DB/Tools)
 │   ├── Experience.tsx  # Practical engineering & hackathon experience timeline
+│   ├── Projects.tsx    # Case-study style showcase with architecture diagrams
 │   ├── Education.tsx   # B.Tech CSE SRKR Engineering College (2024-2028)
 │   ├── Certifications.tsx # Extensible coursework & technical certificates
 │   ├── GitHub.tsx      # Building in public hub with live repo links
@@ -47,8 +46,8 @@ src/
 │   └── Footer.tsx      # Clean footer with author info and copyright
 ├── data/               # Decoupled data models
 │   ├── projects.ts     # Project details, problem statements, and pipeline steps
-│   ├── skills.ts       # Categorized technical competencies
-│   ├── experience.ts   # Project and hackathon timeline records
+│   ├── skills.ts       # Skills catalog
+│   ├── experience.ts   # Practical experience records
 │   ├── education.ts    # Academic records
 │   └── certifications.ts # Certifications data
 ├── App.tsx             # Root layout assembler
@@ -95,9 +94,9 @@ src/
    ```bash
    git init
    git add .
-   git commit -m "Initial commit: Bharadwaj developer portfolio"
+   git commit -m "feat: complete modern developer portfolio redesign"
    git branch -M main
-   git remote add origin https://github.com/Bharadwaj-source/portfolio.git
+   git remote add origin https://github.com/bharadwajareddy07/My-Portfolio.git
    git push -u origin main
    ```
 

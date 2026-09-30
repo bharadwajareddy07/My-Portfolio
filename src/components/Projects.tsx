@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ExternalLink,
   Github,
@@ -6,117 +7,96 @@ import {
   Sparkles,
   Activity,
   MapPin,
-  ShieldCheck
+  ShieldCheck,
+  Layers,
+  X,
+  Maximize2
 } from 'lucide-react';
-import { projectsData } from '../data/projects';
-
-type FilterType = 'All' | 'Web' | 'AI/ML' | 'Full Stack';
+import { projectsData, type ProjectDetail } from '../data/projects';
 
 export const Projects: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<FilterType>('All');
-  const [selectedPipelineStep, setSelectedPipelineStep] = useState<number>(1);
-
-  const filteredProjects = projectsData.filter((project) => {
-    if (activeFilter === 'All') return true;
-    return project.categories.includes(activeFilter as any);
-  });
+  const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#070B14]">
+    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#070B14] overflow-hidden">
       {/* Background Accent Gradients */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#2F6BFF]/5 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#00D4FF]/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#2F6BFF]/8 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#00D4FF]/6 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1321] border border-[#1E293B] text-xs font-mono text-[#00D4FF] mb-3">
-            <span>&lt;featured works /&gt;</span>
+            <span>&lt;featured projects /&gt;</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F8FAFC]">
-            Featured Projects
+            Projects Showcase
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#94A3B8] max-w-2xl">
-            Real-world systems, AI architectures, and full-stack applications engineered to solve genuine domain challenges.
+            Practical web applications and RAG-powered systems built with real-world architectures.
           </p>
           <div className="w-12 h-1 bg-[#2F6BFF] rounded-full mt-4" />
-        </div>
+        </motion.div>
 
-        {/* Filter Tabs */}
-        <div className="flex items-center justify-center gap-2 mb-12 flex-wrap">
-          {(['All', 'Full Stack', 'AI/ML', 'Web'] as FilterType[]).map((filter) => {
-            const isActive = activeFilter === filter;
-            return (
-              <button
-                key={filter}
-                type="button"
-                onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 ${
-                  isActive
-                    ? 'bg-[#2F6BFF] text-white shadow-lg shadow-[#2F6BFF]/25 border border-[#2F6BFF]'
-                    : 'bg-[#0D1321] text-[#94A3B8] hover:text-[#F8FAFC] border border-[#1E293B] hover:border-[#2F6BFF]/30'
-                }`}
-              >
-                {filter}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Projects List Showcase */}
+        {/* Projects Cards List */}
         <div className="space-y-16">
-          {filteredProjects.map((project, index) => {
-            const isRAG = project.id === 'rag-ai-application';
+          {projectsData.map((project, index) => {
+            const isRAG = project.id === 'rag-application';
             const isAqua = project.id === 'aqua-feed-system';
-            const isLegal = project.id === 'legal-metrology-sih';
+            const isLegal = project.id === 'legal-metrology-app';
 
             return (
-              <div
+              <motion.article
                 key={project.id}
-                className="rounded-3xl bg-[#0D1321] border border-[#1E293B] overflow-hidden shadow-2xl hover:border-[#2F6BFF]/40 transition-all duration-300"
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
+                whileHover={{ y: -4 }}
+                className="rounded-3xl bg-[#0D1321] border border-[#1E293B] overflow-hidden shadow-2xl hover:border-[#2F6BFF]/45 transition-all duration-300 group"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-                  {/* Left / Top Details Column */}
-                  <div className="lg:col-span-6 p-6 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#1E293B]">
+                  {/* Left Column: Project Overview */}
+                  <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#1E293B]">
                     <div>
                       {/* Badge and Tag */}
-                      <div className="flex items-center gap-3 mb-4">
+                      <div className="flex items-center gap-3 mb-3">
                         <span className="px-3 py-1 rounded-md bg-[#131B2E] border border-[#2F6BFF]/30 text-xs font-mono text-[#00D4FF]">
                           {project.badge}
                         </span>
                         <span className="text-xs font-mono text-[#64748B]">
-                          Project #{index + 1}
+                          Project 0{index + 1}
                         </span>
                       </div>
 
                       {/* Project Title */}
-                      <h3 className="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight mb-4">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight mb-2 group-hover:text-[#00D4FF] transition-colors">
                         {project.title}
                       </h3>
 
-                      {/* Short Description */}
-                      <p className="text-sm sm:text-base text-[#F8FAFC]/90 leading-relaxed mb-6 font-normal">
-                        {project.shortDescription}
+                      {/* Subtitle */}
+                      <p className="text-sm font-medium text-[#94A3B8] mb-5 font-mono">
+                        {project.subtitle}
                       </p>
 
-                      {/* Problem Solved Callout */}
-                      <div className="rounded-xl bg-[#070B14] border border-[#1E293B] p-4 mb-6">
-                        <div className="flex items-center gap-2 text-xs font-semibold text-[#00D4FF] mb-1.5 uppercase tracking-wider font-mono">
-                          <ShieldCheck className="w-3.5 h-3.5" />
-                          <span>Problem Solved</span>
-                        </div>
-                        <p className="text-xs text-[#94A3B8] leading-relaxed">
-                          {project.problemSolved}
-                        </p>
-                      </div>
+                      {/* Description */}
+                      <p className="text-sm sm:text-base text-[#F8FAFC]/90 leading-relaxed mb-6 font-normal">
+                        {project.description}
+                      </p>
 
-                      {/* Key Features Bullet List */}
+                      {/* Key Features Quick List */}
                       <div className="mb-6">
                         <h4 className="text-xs font-mono uppercase tracking-wider text-[#64748B] mb-3">
-                          Key Capabilities &amp; Highlights
+                          Key Capabilities
                         </h4>
                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#94A3B8]">
-                          {project.keyFeatures.map((feat) => (
+                          {project.keyFeatures.slice(0, 4).map((feat) => (
                             <li key={feat} className="flex items-start gap-2">
                               <CheckCircle className="w-3.5 h-3.5 text-[#2F6BFF] mt-0.5 shrink-0" />
                               <span>{feat}</span>
@@ -126,7 +106,7 @@ export const Projects: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Footer Tech Stack and Links */}
+                    {/* Footer Tech Stack and Action Buttons */}
                     <div className="pt-6 border-t border-[#1E293B]/80">
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.technologies.map((tech) => (
@@ -139,26 +119,34 @@ export const Projects: React.FC = () => {
                         ))}
                       </div>
 
-                      <div className="flex items-center gap-3">
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#131B2E] hover:bg-[#1E293B] text-[#F8FAFC] text-xs font-medium border border-[#1E293B] hover:border-[#2F6BFF]/40 transition-colors"
-                          >
-                            <Github className="w-4 h-4" />
-                            <span>GitHub Repository</span>
-                          </a>
-                        )}
-                        {project.liveDemoUrl && (
+                      <div className="flex flex-wrap items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedProject(project)}
+                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#2F6BFF] hover:bg-[#2557D6] text-white text-xs font-medium shadow-md shadow-[#2F6BFF]/20 hover:-translate-y-0.5 transition-all"
+                        >
+                          <Maximize2 className="w-3.5 h-3.5" />
+                          <span>View Case Details</span>
+                        </button>
+
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#131B2E] hover:bg-[#1E293B] text-[#F8FAFC] text-xs font-medium border border-[#1E293B] hover:border-[#2F6BFF]/40 hover:-translate-y-0.5 transition-all"
+                        >
+                          <Github className="w-4 h-4" />
+                          <span>GitHub</span>
+                        </a>
+
+                        {project.liveDemoUrl && project.liveDemoUrl !== '#' && (
                           <a
                             href={project.liveDemoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#2F6BFF] hover:bg-[#2557D6] text-white text-xs font-medium shadow-md shadow-[#2F6BFF]/20 transition-colors"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#070B14] hover:bg-[#131B2E] text-[#F8FAFC] text-xs font-medium border border-[#1E293B] hover:-translate-y-0.5 transition-all"
                           >
-                            <ExternalLink className="w-4 h-4" />
+                            <ExternalLink className="w-4 h-4 text-[#00D4FF]" />
                             <span>Live Demo</span>
                           </a>
                         )}
@@ -166,206 +154,272 @@ export const Projects: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Right Column: Custom Visual System UI / Pipeline Showcase */}
-                  <div className="lg:col-span-6 p-6 sm:p-8 lg:p-10 bg-[#090E1A] flex flex-col justify-center">
-                    {/* Visual Interface Component based on Project Type */}
-                    {isAqua && (
-                      <div className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-5 shadow-inner">
-                        {/* Mock Dashboard Top Bar */}
-                        <div className="flex items-center justify-between pb-3.5 border-b border-[#1E293B] mb-4">
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
-                            <span className="text-xs font-mono font-medium text-[#F8FAFC]">
-                              AquaFeed Management Console
-                            </span>
-                          </div>
-                          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                            Live Sync Active
-                          </span>
-                        </div>
-
-                        {/* Metric Cards Mockup */}
-                        <div className="grid grid-cols-3 gap-3 mb-4">
-                          <div className="rounded-xl bg-[#070B14] p-3 border border-[#1E293B]">
-                            <span className="text-[10px] text-[#64748B] font-mono block">FCR Index</span>
-                            <span className="text-base font-bold text-[#00D4FF]">1.28</span>
-                            <span className="text-[9px] text-emerald-400 block mt-0.5">Optimal Range</span>
-                          </div>
-                          <div className="rounded-xl bg-[#070B14] p-3 border border-[#1E293B]">
-                            <span className="text-[10px] text-[#64748B] font-mono block">Biomass</span>
-                            <span className="text-base font-bold text-[#2F6BFF]">4,850 kg</span>
-                            <span className="text-[9px] text-cyan-400 block mt-0.5">Pond Sector A-C</span>
-                          </div>
-                          <div className="rounded-xl bg-[#070B14] p-3 border border-[#1E293B]">
-                            <span className="text-[10px] text-[#64748B] font-mono block">ABW Metric</span>
-                            <span className="text-base font-bold text-emerald-400">28.4 g</span>
-                            <span className="text-[9px] text-[#94A3B8] block mt-0.5">Growth +3.2g/wk</span>
-                          </div>
-                        </div>
-
-                        {/* Operational Feed & Farm Visit Stream Preview */}
-                        <div className="space-y-2">
-                          <div className="text-[11px] font-mono uppercase text-[#64748B] flex items-center justify-between">
-                            <span>Agent Field Visit Logs &amp; Feed Allocations</span>
-                            <Activity className="w-3.5 h-3.5 text-[#00D4FF]" />
-                          </div>
-
-                          <div className="rounded-lg bg-[#070B14] border border-[#1E293B]/70 p-2.5 flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-2">
-                              <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                              <span className="text-[#F8FAFC] font-medium">Farm #04 - Pond 2 Visit</span>
-                            </div>
-                            <span className="font-mono text-[11px] text-[#94A3B8]">120kg Feed Logged</span>
-                          </div>
-
-                          <div className="rounded-lg bg-[#070B14] border border-[#1E293B]/70 p-2.5 flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-2">
-                              <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                              <span className="text-[#F8FAFC] font-medium">Mortality &amp; Health Check</span>
-                            </div>
-                            <span className="font-mono text-[11px] text-emerald-400">Normal (0.2%)</span>
-                          </div>
-
-                          <div className="rounded-lg bg-[#070B14] border border-[#1E293B]/70 p-2.5 flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-2">
-                              <span className="w-2 h-2 rounded-full bg-[#2F6BFF]" />
-                              <span className="text-[#F8FAFC] font-medium">Yield Harvest Forecast</span>
-                            </div>
-                            <span className="font-mono text-[11px] text-[#00D4FF]">Est. Harvest 18 Days</span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {isRAG && project.pipeline && (
-                      <div className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-5 shadow-inner">
-                        {/* RAG Visual Pipeline Header */}
-                        <div className="flex items-center justify-between pb-3.5 border-b border-[#1E293B] mb-4">
+                  {/* Right Column: Visual Mockup / Interface Preview */}
+                  <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 bg-[#090E1A] flex flex-col justify-center overflow-hidden">
+                    {/* Project Specific Interactive Preview */}
+                    {isRAG && (
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-5 shadow-inner"
+                      >
+                        <div className="flex items-center justify-between pb-3 border-b border-[#1E293B] mb-4">
                           <div className="flex items-center gap-2">
                             <Sparkles className="w-4 h-4 text-[#00D4FF]" />
                             <span className="text-xs font-mono font-medium text-[#F8FAFC]">
-                              End-to-End RAG Pipeline Architecture
+                              RAG Document Processing Pipeline
                             </span>
                           </div>
-                          <span className="text-[10px] font-mono text-[#64748B]">
-                            Step {selectedPipelineStep} of {project.pipeline.length}
+                          <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                            Context Retrieval
                           </span>
                         </div>
 
-                        {/* Interactive Step-by-Step Flow Nodes */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
-                          {project.pipeline.map((p) => {
-                            const isSelected = selectedPipelineStep === p.step;
-                            return (
-                              <button
-                                key={p.step}
-                                type="button"
-                                onClick={() => setSelectedPipelineStep(p.step)}
-                                className={`p-2.5 rounded-xl text-left border transition-all duration-200 ${
-                                  isSelected
-                                    ? 'bg-[#131B2E] border-[#2F6BFF] shadow-sm'
-                                    : 'bg-[#070B14] border-[#1E293B] hover:border-[#1E293B]/80'
-                                }`}
-                              >
-                                <div className="flex items-center justify-between mb-1">
-                                  <span className="text-[10px] font-mono text-[#64748B]">
-                                    0{p.step}
-                                  </span>
-                                  {isSelected && (
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D4FF]" />
-                                  )}
-                                </div>
-                                <div className={`text-xs font-semibold truncate ${isSelected ? 'text-[#00D4FF]' : 'text-[#F8FAFC]'}`}>
-                                  {p.title}
-                                </div>
-                              </button>
-                            );
-                          })}
+                        <div className="space-y-2">
+                          <div className="p-2.5 rounded-xl bg-[#070B14] border border-[#1E293B] flex items-center justify-between text-xs">
+                            <span className="text-[#94A3B8]">1. Ingest &amp; Semantic Chunking</span>
+                            <span className="text-[#00D4FF] font-mono text-[11px]">LangChain</span>
+                          </div>
+                          <div className="p-2.5 rounded-xl bg-[#070B14] border border-[#1E293B] flex items-center justify-between text-xs">
+                            <span className="text-[#94A3B8]">2. Embeddings &amp; Vector Index</span>
+                            <span className="text-[#2F6BFF] font-mono text-[11px]">Vector Database</span>
+                          </div>
+                          <div className="p-2.5 rounded-xl bg-[#070B14] border border-[#1E293B] flex items-center justify-between text-xs">
+                            <span className="text-[#94A3B8]">3. Similarity Search &amp; Context</span>
+                            <span className="text-emerald-400 font-mono text-[11px]">Cosine Distance</span>
+                          </div>
+                          <div className="p-2.5 rounded-xl bg-[#070B14] border border-[#1E293B] flex items-center justify-between text-xs">
+                            <span className="text-[#94A3B8]">4. Grounded Output Response</span>
+                            <span className="text-cyan-300 font-mono text-[11px]">LLM Synthesis</span>
+                          </div>
                         </div>
 
-                        {/* Selected Pipeline Step Deep-Dive Box */}
-                        <div className="rounded-xl bg-[#070B14] border border-[#1E293B] p-4">
-                          <div className="flex items-center gap-2 text-xs font-mono text-[#00D4FF] mb-1">
-                            <span>STAGE {project.pipeline[selectedPipelineStep - 1].step}:</span>
-                            <span className="text-[#F8FAFC] font-semibold">
-                              {project.pipeline[selectedPipelineStep - 1].title}
+                        <div className="mt-4 pt-3 border-t border-[#1E293B] text-[11px] font-mono text-[#64748B] flex items-center justify-between">
+                          <span>Python &bull; LangChain &bull; Vector DB</span>
+                          <span className="text-[#00D4FF]">Click card to inspect</span>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {isAqua && (
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-5 shadow-inner"
+                      >
+                        <div className="flex items-center justify-between pb-3 border-b border-[#1E293B] mb-4">
+                          <div className="flex items-center gap-2">
+                            <Activity className="w-4 h-4 text-[#00D4FF]" />
+                            <span className="text-xs font-mono font-medium text-[#F8FAFC]">
+                              AquaFeed Management Application
                             </span>
                           </div>
-                          <p className="text-xs text-[#94A3B8] leading-relaxed">
-                            {project.pipeline[selectedPipelineStep - 1].desc}
-                          </p>
+                          <span className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">
+                            Operations UI
+                          </span>
+                        </div>
 
-                          {/* Visual ASCII Flow Indicator */}
-                          <div className="mt-3 pt-3 border-t border-[#1E293B] flex items-center justify-between text-[10px] font-mono text-[#64748B]">
-                            <span>Docs &rarr; ChromaDB &rarr; Groq</span>
-                            <span className="text-emerald-400">Contextual Precision &gt; 96%</span>
+                        <div className="grid grid-cols-2 gap-2 mb-3">
+                          <div className="p-3 rounded-xl bg-[#070B14] border border-[#1E293B]">
+                            <span className="text-[10px] text-[#64748B] block font-mono">Agent Field Logs</span>
+                            <span className="text-sm font-bold text-[#F8FAFC]">Visit Forms</span>
+                          </div>
+                          <div className="p-3 rounded-xl bg-[#070B14] border border-[#1E293B]">
+                            <span className="text-[10px] text-[#64748B] block font-mono">Pond Records</span>
+                            <span className="text-sm font-bold text-[#00D4FF]">Feeding Schedule</span>
                           </div>
                         </div>
-                      </div>
+
+                        <div className="p-3 rounded-xl bg-[#070B14] border border-[#1E293B] text-xs">
+                          <div className="text-[11px] font-mono text-[#64748B] mb-1">Architecture Flow</div>
+                          <div className="text-[#94A3B8] text-[11px]">
+                            React Web Interface &rarr; Python Backend APIs &rarr; SQL Relational Store
+                          </div>
+                        </div>
+                      </motion.div>
                     )}
 
                     {isLegal && (
-                      <div className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-5 shadow-inner">
-                        {/* Legal Metrology Verification Portal Mockup */}
-                        <div className="flex items-center justify-between pb-3.5 border-b border-[#1E293B] mb-4">
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-5 shadow-inner"
+                      >
+                        <div className="flex items-center justify-between pb-3 border-b border-[#1E293B] mb-4">
                           <div className="flex items-center gap-2">
                             <ShieldCheck className="w-4 h-4 text-[#38BDF8]" />
                             <span className="text-xs font-mono font-medium text-[#F8FAFC]">
-                              Legal Metrology Field Inspector
+                              Legal Metrology Inspection App
                             </span>
                           </div>
-                          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                            GPS Verified
+                          <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
+                            Verification Portal
                           </span>
                         </div>
 
-                        {/* Map GPS & Inspection Coordinate Tile */}
-                        <div className="rounded-xl bg-[#070B14] border border-[#1E293B] p-3 mb-4">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-medium text-[#F8FAFC] flex items-center gap-1.5">
-                              <MapPin className="w-3.5 h-3.5 text-[#00D4FF]" />
-                              Commercial Zone Verification #402
-                            </span>
-                            <span className="text-[10px] font-mono text-[#64748B]">16.5449° N, 81.5212° E</span>
+                        <div className="p-3 rounded-xl bg-[#070B14] border border-[#1E293B] mb-3 text-xs">
+                          <div className="flex items-center justify-between mb-1.5">
+                            <span className="font-semibold text-[#F8FAFC]">Inspection Form Verification</span>
+                            <span className="text-emerald-400 font-mono text-[10px]">Active</span>
                           </div>
-                          <div className="h-16 rounded-lg bg-[#0D1321] border border-[#1E293B] flex items-center justify-center relative overflow-hidden">
-                            <div className="absolute inset-0 bg-grid-pattern opacity-40" />
-                            <div className="relative z-10 flex items-center gap-2 text-xs text-[#94A3B8]">
-                              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-                              <span className="font-mono text-emerald-300">Target Establishment Geo-Tagged</span>
-                            </div>
-                          </div>
+                          <p className="text-[11px] text-[#94A3B8]">
+                            Digital logging for field officers with compliance checklist verification.
+                          </p>
                         </div>
 
-                        {/* Rules Engine Checklist Preview */}
-                        <div className="space-y-2">
-                          <span className="text-[11px] font-mono uppercase text-[#64748B] block">
-                            Automated Compliance Rules Engine
+                        <div className="p-3 rounded-xl bg-[#070B14] border border-[#1E293B] text-xs flex items-center justify-between">
+                          <span className="text-[#94A3B8]">Location Coordinates</span>
+                          <span className="text-[#00D4FF] font-mono text-[11px] flex items-center gap-1">
+                            <MapPin className="w-3 h-3" />
+                            GPS Logged
                           </span>
-                          <div className="rounded-lg bg-[#070B14] border border-[#1E293B]/70 p-2.5 flex items-center justify-between text-xs">
-                            <span className="text-[#94A3B8]">Weighing Scale Calibration (Sec 15)</span>
-                            <span className="text-emerald-400 font-mono text-[11px] flex items-center gap-1">
-                              <CheckCircle className="w-3 h-3" />
-                              Passed
-                            </span>
-                          </div>
-                          <div className="rounded-lg bg-[#070B14] border border-[#1E293B]/70 p-2.5 flex items-center justify-between text-xs">
-                            <span className="text-[#94A3B8]">Standard Packaging &amp; MRP Display</span>
-                            <span className="text-emerald-400 font-mono text-[11px] flex items-center gap-1">
-                              <CheckCircle className="w-3 h-3" />
-                              Verified
-                            </span>
-                          </div>
                         </div>
-                      </div>
+                      </motion.div>
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.article>
             );
           })}
         </div>
       </div>
+
+      {/* Detailed Interactive Project Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="fixed inset-0 bg-black/80 backdrop-blur-md"
+            />
+
+            {/* Modal Dialog */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="relative w-full max-w-3xl rounded-3xl bg-[#0D1321] border border-[#1E293B] p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto"
+            >
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-6 right-6 p-2 rounded-xl bg-[#070B14] border border-[#1E293B] text-[#94A3B8] hover:text-[#F8FAFC] hover:border-[#2F6BFF]/40 transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Modal Header */}
+              <div className="pr-12 mb-6">
+                <span className="px-3 py-1 rounded-md bg-[#131B2E] border border-[#2F6BFF]/40 text-xs font-mono text-[#00D4FF] mb-2 inline-block">
+                  {selectedProject.badge}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#F8FAFC]">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-sm text-[#00D4FF] font-mono mt-1">
+                  {selectedProject.subtitle}
+                </p>
+              </div>
+
+              {/* Modal Body Sections */}
+              <div className="space-y-6 text-sm text-[#94A3B8]">
+                {/* 1. Problem & Solution Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-2xl bg-[#070B14] border border-[#1E293B]">
+                    <h4 className="text-xs font-mono uppercase text-[#38BDF8] mb-2 flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4" />
+                      The Problem
+                    </h4>
+                    <p className="text-xs leading-relaxed">
+                      {selectedProject.problem}
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-[#070B14] border border-[#1E293B]">
+                    <h4 className="text-xs font-mono uppercase text-[#00D4FF] mb-2 flex items-center gap-1.5">
+                      <Layers className="w-4 h-4" />
+                      The Solution
+                    </h4>
+                    <p className="text-xs leading-relaxed">
+                      {selectedProject.solution}
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2. Architecture */}
+                <div className="p-4 rounded-2xl bg-[#070B14] border border-[#1E293B]">
+                  <h4 className="text-xs font-mono uppercase text-[#F8FAFC] mb-2">
+                    Application Architecture
+                  </h4>
+                  <p className="text-xs font-mono text-[#00D4FF]">
+                    {selectedProject.architecture}
+                  </p>
+                </div>
+
+                {/* 3. Key Features */}
+                <div>
+                  <h4 className="text-xs font-mono uppercase text-[#64748B] mb-3">
+                    Implemented Features
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {selectedProject.keyFeatures.map((feat) => (
+                      <div key={feat} className="flex items-start gap-2 text-xs">
+                        <CheckCircle className="w-3.5 h-3.5 text-[#2F6BFF] mt-0.5 shrink-0" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 4. Technologies */}
+                <div>
+                  <h4 className="text-xs font-mono uppercase text-[#64748B] mb-3">
+                    Technologies
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.technologies.map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1 rounded-lg bg-[#070B14] border border-[#1E293B] text-xs font-mono text-[#F8FAFC]"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Footer CTAs */}
+              <div className="mt-8 pt-6 border-t border-[#1E293B] flex items-center justify-between">
+                <a
+                  href={selectedProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2F6BFF] hover:bg-[#2557D6] text-white text-xs font-medium transition-all shadow-md shadow-[#2F6BFF]/25"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>View Code on GitHub</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="px-4 py-2.5 rounded-xl bg-[#070B14] hover:bg-[#131B2E] text-[#94A3B8] hover:text-[#F8FAFC] text-xs border border-[#1E293B] transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

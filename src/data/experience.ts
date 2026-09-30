@@ -1,26 +1,26 @@
 export interface ExperienceItem {
   id: string;
-  type: 'Project Work' | 'Hackathon' | 'Technical Initiative';
+  type: 'Project Engineering' | 'Hackathon Initiative' | 'Technical Development';
   role: string;
-  organizationOrContext: string;
+  context: string;
   period: string;
   description: string;
-  bullets: string[];
+  highlights: string[];
   techStack: string[];
 }
 
 export const practicalExperienceData: ExperienceItem[] = [
   {
     id: 'exp-aqua-system',
-    type: 'Project Work',
+    type: 'Project Engineering',
     role: 'Full-Stack Developer (Independent Project)',
-    organizationOrContext: 'Aqua Feed Management Project',
+    context: 'Aqua Feed Management System',
     period: '2024 - Present',
     description:
       'Engineered an end-to-end aquaculture operations platform solving complex data tracking for farm visits, feed distribution, and biological metric calculations.',
-    bullets: [
+    highlights: [
       'Architected responsive user interfaces in React & TypeScript with role-tailored dashboards for farm agents and owners.',
-      'Designed PostgreSQL schema hosted on Supabase to track farmers, ponds, daily feed weights, and harvest timelines.',
+      'Designed normalized PostgreSQL schema hosted on Supabase to track farmers, ponds, daily feed weights, and harvest timelines.',
       'Constructed FastAPI endpoints to compute key biological ratios including FCR (Feed Conversion Ratio), ABW, and biomass estimations.',
       'Implemented robust form validations and state management to handle offline-capable farm visit logs.'
     ],
@@ -28,13 +28,13 @@ export const practicalExperienceData: ExperienceItem[] = [
   },
   {
     id: 'exp-rag-system',
-    type: 'Project Work',
+    type: 'Project Engineering',
     role: 'AI / LLM Systems Developer (Independent Project)',
-    organizationOrContext: 'Document Q&A Intelligence Pipeline',
+    context: 'RAG Document Intelligence Pipeline',
     period: '2024',
     description:
-      'Researched and developed a complete Retrieval-Augmented Generation (RAG) system to perform grounded natural language reasoning over custom domain documents.',
-    bullets: [
+      'Researched and implemented a complete Retrieval-Augmented Generation (RAG) system to perform grounded natural language reasoning over custom domain documents.',
+    highlights: [
       'Integrated LangChain document processing chains with recursive text splitting and semantic overlap mechanisms.',
       'Implemented ChromaDB vector store indexing with high-dimensional text embeddings for fast similarity lookups.',
       'Connected high-throughput Groq LLM inference for near instantaneous contextual response generation.',
@@ -44,13 +44,13 @@ export const practicalExperienceData: ExperienceItem[] = [
   },
   {
     id: 'exp-sih-legal-metrology',
-    type: 'Hackathon',
-    role: 'Full-Stack & ML Contributor (Hackathon Project)',
-    organizationOrContext: 'Legal Metrology Inspection Platform (Smart India Hackathon Focus)',
+    type: 'Hackathon Initiative',
+    role: 'Full-Stack & ML Contributor (Smart India Hackathon Focus)',
+    context: 'Legal Metrology Inspection & Compliance Platform',
     period: '2024',
     description:
       'Collaborated on building a problem-focused digital inspection portal for the Legal Metrology domain to streamline verification compliance and geo-tagged field audits.',
-    bullets: [
+    highlights: [
       'Developed frontend views with Next.js & TypeScript for verification officer schedules and inspection report submission.',
       'Integrated GPS/map-based coordinates logging to verify physical inspection presence at vendor establishments.',
       'Implemented automated compliance rule checks to flag equipment calibration discrepancies and generate audit-ready inspection certificates.',

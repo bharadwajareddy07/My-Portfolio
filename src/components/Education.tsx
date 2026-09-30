@@ -1,13 +1,20 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { GraduationCap, Calendar, MapPin, BookOpen, CheckCircle } from 'lucide-react';
 import { educationData } from '../data/education';
 
 export const Education: React.FC = () => {
   return (
-    <section id="education" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#070B14]">
+    <section id="education" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-[#070B14] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1321] border border-[#1E293B] text-xs font-mono text-[#00D4FF] mb-3">
             <span>&lt;academics /&gt;</span>
           </div>
@@ -18,14 +25,19 @@ export const Education: React.FC = () => {
             Academic foundations in Computer Science and Engineering.
           </p>
           <div className="w-12 h-1 bg-[#2F6BFF] rounded-full mt-4" />
-        </div>
+        </motion.div>
 
-        {/* Education Timeline / Card */}
+        {/* Education Timeline / Card with Scroll Reveal */}
         <div className="max-w-3xl mx-auto">
           {educationData.map((edu, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-6 sm:p-8 hover:border-[#2F6BFF]/40 transition-all duration-300 shadow-xl relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -3, borderColor: 'rgba(47, 107, 255, 0.4)' }}
+              className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-6 sm:p-8 transition-all duration-300 shadow-xl relative overflow-hidden"
             >
               {/* Subtle top accent line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2F6BFF] to-[#00D4FF]" />
@@ -75,7 +87,7 @@ export const Education: React.FC = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

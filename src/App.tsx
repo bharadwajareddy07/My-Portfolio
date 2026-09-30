@@ -3,10 +3,8 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Skills } from './components/Skills';
+import { RAGSection } from './components/RAGSection';
 import { Projects } from './components/Projects';
-import { Experience } from './components/Experience';
-import { Education } from './components/Education';
-import { Certifications } from './components/Certifications';
 import { GitHubSection } from './components/GitHub';
 import { ResumeCTA } from './components/ResumeCTA';
 import { Contact } from './components/Contact';
@@ -19,34 +17,28 @@ export const App: React.FC = () => {
       <Navbar />
 
       <main>
-        {/* Hero Section */}
+        {/* 1. Hero Section */}
         <Hero />
 
-        {/* About Section */}
+        {/* 2. About Me */}
         <About />
 
-        {/* Technical Skills */}
+        {/* 3. Skills */}
         <Skills />
 
-        {/* Projects Showcase (Central Showcase) */}
+        {/* 4. Dedicated RAG Section */}
+        <RAGSection />
+
+        {/* 5. Projects Showcase */}
         <Projects />
 
-        {/* Practical Experience & Timeline */}
-        <Experience />
-
-        {/* Education */}
-        <Education />
-
-        {/* Certifications & Continuous Learning */}
-        <Certifications />
-
-        {/* Building in Public / GitHub Activity */}
+        {/* 6. GitHub / More of My Work */}
         <GitHubSection />
 
-        {/* Resume Call To Action */}
+        {/* 7. Resume Call To Action */}
         <ResumeCTA />
 
-        {/* Contact & Inquiry */}
+        {/* 8. Contact Section */}
         <Contact />
       </main>
 
