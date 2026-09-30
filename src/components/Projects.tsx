@@ -48,8 +48,9 @@ export const Projects: React.FC = () => {
         <div className="space-y-16">
           {projectsData.map((project, index) => {
             const isRAG = project.id === 'rag-application';
-            const isAqua = project.id === 'aqua-feed-system';
             const isLegal = project.id === 'legal-metrology-app';
+            const isAqua = project.id === 'aqua-feed-system';
+            const isThink = project.id === 'think-twice';
 
             return (
               <motion.article
@@ -273,6 +274,44 @@ export const Projects: React.FC = () => {
                             <MapPin className="w-3 h-3" />
                             GPS Logged
                           </span>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {isThink && (
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-5 shadow-inner"
+                      >
+                        <div className="flex items-center justify-between pb-3 border-b border-[#1E293B] mb-4">
+                          <div className="flex items-center gap-2">
+                            <Sparkles className="w-4 h-4 text-[#2F6BFF]" />
+                            <span className="text-xs font-mono font-medium text-[#F8FAFC]">
+                              Decision Analysis Engine
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono text-[#00D4FF] bg-[#2F6BFF]/10 px-2 py-0.5 rounded border border-[#2F6BFF]/20">
+                            Reflection Portal
+                          </span>
+                        </div>
+
+                        <div className="space-y-2 mb-3">
+                          <div className="p-2.5 rounded-xl bg-[#070B14] border border-[#1E293B] flex items-center justify-between text-xs">
+                            <span className="text-[#94A3B8]">1. Scenario Simulation</span>
+                            <span className="text-[#00D4FF] font-mono text-[11px]">Risk Checked</span>
+                          </div>
+                          <div className="p-2.5 rounded-xl bg-[#070B14] border border-[#1E293B] flex items-center justify-between text-xs">
+                            <span className="text-[#94A3B8]">2. Trade-Off Comparison</span>
+                            <span className="text-emerald-400 font-mono text-[11px]">Multi-Criteria</span>
+                          </div>
+                        </div>
+
+                        <div className="p-3 rounded-xl bg-[#070B14] border border-[#1E293B] text-xs">
+                          <div className="text-[11px] font-mono text-[#64748B] mb-1">Architecture Flow</div>
+                          <div className="text-[#94A3B8] text-[11px]">
+                            React Client &rarr; Evaluation Engine &rarr; Decision History Store
+                          </div>
                         </div>
                       </motion.div>
                     )}

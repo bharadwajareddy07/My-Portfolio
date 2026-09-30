@@ -104,5 +104,31 @@ export const projectsData: ProjectDetail[] = [
     ],
     githubUrl: 'https://github.com/bharadwajareddy07/My-Portfolio',
     liveDemoUrl: '#'
+  },
+  {
+    id: 'think-twice',
+    title: 'Think-Twice',
+    subtitle: 'Decision Analysis & Cognitive Reflection Web Application',
+    category: 'Web Application',
+    badge: 'Web Application',
+    accentColor: '#2F6BFF',
+    description:
+      'An interactive web application designed to help users evaluate critical decisions, analyze potential outcomes, reduce cognitive biases, and review structured reasoning before taking action.',
+    problem:
+      'Impulsive decision-making and cognitive oversights frequently lead to avoidable mistakes in planning, development, and daily workflows without a structured reflection pause.',
+    solution:
+      'Built an intuitive application featuring structured evaluation frameworks, outcome risk assessments, and scenario analysis to systematically inspect decisions from multiple perspectives.',
+    architecture:
+      'React Frontend Client → API Integration Layer → Decision Evaluation Engine & Structured State Management.',
+    technologies: ['React', 'JavaScript', 'Python', 'APIs', 'HTML5', 'CSS'],
+    keyFeatures: [
+      'Multi-perspective decision evaluation workflow',
+      'Cognitive bias and risk assessment checklists',
+      'Scenario simulation and trade-off comparison',
+      'Structured reasoning logs and decision history',
+      'Responsive, distraction-free user interface'
+    ],
+    githubUrl: 'https://github.com/bharadwajareddy07/My-Portfolio',
+    liveDemoUrl: '#'
   }
 ];
