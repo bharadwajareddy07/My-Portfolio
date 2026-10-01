@@ -4,20 +4,28 @@ export interface EducationItem {
   institution: string;
   period: string;
   location?: string;
+  relevantFocus?: string[];
   highlights: string[];
 }
 
 export const educationData: EducationItem[] = [
   {
-    degree: 'Bachelor of Technology (B.Tech)',
+    degree: 'B.Tech — Computer Science and Engineering',
     fieldOfStudy: 'Computer Science and Engineering',
     institution: 'SRKR Engineering College',
-    period: '2024 – 2028',
+    period: '2025 – 2029',
     location: 'Bhimavaram, Andhra Pradesh, India',
+    relevantFocus: [
+      'Programming',
+      'Web Development',
+      'APIs',
+      'RAG Architecture',
+      'Databases'
+    ],
     highlights: [
-      'Core coursework in Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, and Software Engineering principles.',
-      'Active focus on full-stack web architectures, applied AI/ML pipelines, and problem-solving through practical software building.',
-      '2nd-year undergraduate actively preparing for software engineering and AI internship opportunities.'
+      'Relevant Focus: Programming, Web Development, APIs, RAG Architecture, and Databases.',
+      'Active focus on full-stack web architectures, applied AI/RAG pipelines, and problem-solving through practical software building.',
+      'Undergraduate actively preparing for software engineering and RAG application development opportunities.'
     ]
   }
 ];

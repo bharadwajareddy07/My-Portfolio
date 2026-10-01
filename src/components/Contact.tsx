@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Send, CheckCircle2, Copy, Check, MessageSquare } from 'lucide-react';
+import { Mail, Github, Linkedin, Phone, Send, CheckCircle2, Copy, Check, MessageSquare } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,8 +10,12 @@ export const Contact: React.FC = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
-  const directEmail = 'bharadwaj.workspace@gmail.com';
+  const directEmail = 'v.s.bharadwajareddy@gmail.com';
+  const directPhone = '9121006439';
+  const linkedinUrl = 'https://www.linkedin.com/in/sai-bharadwajareddy-vanukuri-34180038b/';
+  const githubUrl = 'https://github.com/bharadwajareddy07';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -34,6 +38,12 @@ export const Contact: React.FC = () => {
     navigator.clipboard.writeText(directEmail);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(directPhone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   return (
@@ -73,11 +83,45 @@ export const Contact: React.FC = () => {
                 Direct Contact Channels
               </h3>
               <p className="text-sm text-[#94A3B8] leading-relaxed">
-                Feel free to email me directly or explore my open-source work on GitHub. I respond promptly to inquiries.
+                Feel free to email me directly, reach out via phone, or explore my work on GitHub and LinkedIn.
               </p>
 
               {/* Direct Info Cards */}
               <div className="space-y-3 pt-2">
+                {/* Phone item */}
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-[#131B2E] border border-[#1E293B] flex items-center justify-center text-[#2F6BFF]">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-[11px] font-mono text-[#64748B]">PHONE</div>
+                      <a
+                        href={`tel:${directPhone}`}
+                        className="text-xs sm:text-sm font-medium text-[#F8FAFC] hover:text-[#00D4FF] transition-colors"
+                      >
+                        {directPhone}
+                      </a>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleCopyPhone}
+                    className="p-2 rounded-lg bg-[#070B14] border border-[#1E293B] text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
+                    title="Copy Phone Number"
+                    aria-label="Copy Phone Number"
+                  >
+                    {copiedPhone ? (
+                      <Check className="w-4 h-4 text-emerald-400" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
+                </motion.div>
+
                 {/* Email item */}
                 <motion.div
                   whileHover={{ y: -2 }}
@@ -91,7 +135,7 @@ export const Contact: React.FC = () => {
                       <div className="text-[11px] font-mono text-[#64748B]">EMAIL</div>
                       <a
                         href={`mailto:${directEmail}`}
-                        className="text-xs sm:text-sm font-medium text-[#F8FAFC] hover:text-[#00D4FF] transition-colors"
+                        className="text-xs sm:text-sm font-medium text-[#F8FAFC] hover:text-[#00D4FF] transition-colors truncate max-w-[190px] sm:max-w-none block"
                       >
                         {directEmail}
                       </a>
@@ -105,7 +149,7 @@ export const Contact: React.FC = () => {
                     aria-label="Copy Email Address"
                   >
                     {copiedEmail ? (
-                      <Check className="w-4 h-4 text-[#00D4FF]" />
+                      <Check className="w-4 h-4 text-emerald-400" />
                     ) : (
                       <Copy className="w-4 h-4" />
                     )}
@@ -115,7 +159,7 @@ export const Contact: React.FC = () => {
                 {/* GitHub item */}
                 <motion.a
                   whileHover={{ y: -2 }}
-                  href="https://github.com/bharadwajareddy07"
+                  href={githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between hover:border-[#2F6BFF]/40 transition-colors group block"
@@ -136,7 +180,7 @@ export const Contact: React.FC = () => {
                 {/* LinkedIn item */}
                 <motion.a
                   whileHover={{ y: -2 }}
-                  href="https://linkedin.com"
+                  href={linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl bg-[#0D1321] border border-[#1E293B] p-4 flex items-center justify-between hover:border-[#2F6BFF]/40 transition-colors group block"
@@ -148,7 +192,7 @@ export const Contact: React.FC = () => {
                     <div>
                       <div className="text-[11px] font-mono text-[#64748B]">LINKEDIN</div>
                       <div className="text-xs sm:text-sm font-medium text-[#F8FAFC]">
-                        Connect on LinkedIn
+                        sai-bharadwajareddy-vanukuri
                       </div>
                     </div>
                   </div>
@@ -232,7 +276,7 @@ export const Contact: React.FC = () => {
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Hi Bharadwaj, I came across your portfolio and would like to discuss..."
+                    placeholder="Hi Sai Bharadwaja, I came across your portfolio and would like to discuss..."
                     className="w-full px-4 py-3 rounded-xl bg-[#070B14] border border-[#1E293B] text-sm text-[#F8FAFC] placeholder-[#64748B] focus:outline-none focus:border-[#2F6BFF] focus:ring-1 focus:ring-[#2F6BFF] transition-all resize-none"
                   />
                 </div>

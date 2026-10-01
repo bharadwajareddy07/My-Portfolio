@@ -1,10 +1,15 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const email = 'v.s.bharadwajareddy@gmail.com';
+  const phone = '9121006439';
+  const linkedinUrl = 'https://www.linkedin.com/in/sai-bharadwajareddy-vanukuri-34180038b/';
+  const githubUrl = 'https://github.com/bharadwajareddy07';
 
   return (
     <footer className="bg-[#070B14] border-t border-[#1E293B] py-12 px-4 sm:px-6 lg:px-8 relative">
@@ -16,11 +21,11 @@ export const Footer: React.FC = () => {
               <div className="w-7 h-7 rounded-lg bg-[#0D1321] border border-[#1E293B] overflow-hidden flex-shrink-0">
                 <img
                   src="/profile.jpg"
-                  alt="Bharadwaj"
+                  alt="Vanukuri Sai bharadwaja Reddy"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-lg font-bold text-[#F8FAFC]">Bharadwaj</span>
+              <span className="text-lg font-bold text-[#F8FAFC]">Vanukuri Sai bharadwaja Reddy</span>
             </div>
             <p className="text-sm text-[#94A3B8]">
               Application Developer | RAG Application Developer
@@ -28,9 +33,18 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <a
-              href="https://github.com/bharadwajareddy07"
+              href={`tel:${phone}`}
+              className="p-2.5 rounded-xl bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#00D4FF] hover:border-[#2F6BFF]/40 transition-colors"
+              aria-label="Phone Number"
+              title="Call"
+            >
+              <Phone className="w-4 h-4" />
+            </a>
+
+            <a
+              href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#F8FAFC] hover:border-[#2F6BFF]/40 transition-colors"
@@ -41,7 +55,7 @@ export const Footer: React.FC = () => {
             </a>
 
             <a
-              href="https://linkedin.com"
+              href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#00D4FF] hover:border-[#2F6BFF]/40 transition-colors"
@@ -52,7 +66,7 @@ export const Footer: React.FC = () => {
             </a>
 
             <a
-              href="mailto:bharadwaj.workspace@gmail.com"
+              href={`mailto:${email}`}
               className="p-2.5 rounded-xl bg-[#0D1321] border border-[#1E293B] text-[#94A3B8] hover:text-[#00D4FF] hover:border-[#2F6BFF]/40 transition-colors"
               aria-label="Email Address"
               title="Email"
@@ -75,10 +89,10 @@ export const Footer: React.FC = () => {
         {/* Bottom Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B] font-mono">
           <div>
-            &copy; {new Date().getFullYear()} Bharadwaj. All rights reserved.
+            &copy; {new Date().getFullYear()} Vanukuri Sai bharadwaja Reddy. All rights reserved.
           </div>
           <div className="flex items-center gap-4">
-            <span>Built with React &amp; Tailwind CSS</span>
+            <span>Built with React, TypeScript &amp; Tailwind CSS</span>
           </div>
         </div>
       </div>

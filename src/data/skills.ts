@@ -28,25 +28,29 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     id: 'web-development',
-    title: 'Web Development',
+    title: 'Web',
     description: 'Frontend and web technologies for building interactive, responsive user interfaces.',
     iconName: 'Layout',
     skills: [
-      { name: 'HTML5', category: 'Web Development', tag: 'Markup', description: 'Semantic structure, accessibility, and modern web standards' },
-      { name: 'CSS', category: 'Web Development', tag: 'Styling', description: 'Responsive layouts, Flexbox, Grid, and visual design' },
-      { name: 'React', category: 'Web Development', tag: 'UI Library', description: 'Component-based architecture, state management, and interactive UIs' },
-      { name: 'APIs', category: 'Web Development', tag: 'Integration', description: 'Connecting frontend interfaces with backend services and REST endpoints' }
+      { name: 'HTML5 & CSS', category: 'Web', tag: 'Markup & Styling', description: 'Semantic structure, modern layouts, Flexbox, Grid, and visual design' },
+      { name: 'React', category: 'Web', tag: 'UI Library', description: 'Component-based architecture, state management, and interactive UIs' },
+      { name: 'APIs', category: 'Web', tag: 'Integration', description: 'Connecting frontend interfaces with backend services and REST endpoints' }
     ]
   },
   {
     id: 'rag-application-development',
-    title: 'RAG Application Development',
+    title: 'RAG Architecture & AI',
     description: 'Architectures and toolchains for building context-aware, document-grounded applications.',
     iconName: 'Cpu',
     skills: [
-      { name: 'RAG Architecture', category: 'RAG / AI App', tag: 'Architecture', description: 'End-to-end retrieval-augmented generation workflow design' },
-      { name: 'LangChain', category: 'RAG / AI App', tag: 'Framework', description: 'Document loading, text chunking, and prompt orchestration' },
-      { name: 'Vector Databases', category: 'RAG / AI App', tag: 'Storage', description: 'Vector embeddings indexing, similarity search, and retrieval' }
+      { name: 'RAG Architecture', category: 'RAG', tag: 'Architecture', description: 'End-to-end retrieval-augmented generation workflow design' },
+      { name: 'LangChain', category: 'RAG', tag: 'Framework', description: 'Document loading, text chunking, and prompt orchestration' },
+      { name: 'Vector Databases', category: 'RAG', tag: 'Storage', description: 'Vector embeddings indexing, similarity search, and retrieval' }
     ]
   }
+];
+
+export const languagesData = [
+  { name: 'English', proficiency: 'Professional Working Proficiency' },
+  { name: 'Telugu', proficiency: 'Native / Fluent' }
 ];

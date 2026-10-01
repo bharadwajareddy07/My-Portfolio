@@ -20,12 +20,12 @@ export const projectsData: ProjectDetail[] = [
   {
     id: 'rag-application',
     title: 'RAG Application',
-    subtitle: 'Context-Aware Document Question-Answering Application',
+    subtitle: 'Context-Aware Document Retrieval & Generation Application',
     category: 'RAG Application',
     badge: 'RAG Focus',
     accentColor: '#2F6BFF',
     description:
-      'A Retrieval-Augmented Generation application that processes documents, creates embeddings, stores them in a vector database, retrieves relevant information, and uses it to generate context-aware responses.',
+      'Retrieval-Augmented Generation application focused on document processing, retrieval and context-aware responses using RAG architecture, LangChain and a vector database.',
     problem:
       'Standard language models lack awareness of custom, private, or domain-specific documents. Users need accurate answers that are directly grounded in their own uploaded documents without hallucination.',
     solution:
@@ -56,19 +56,19 @@ export const projectsData: ProjectDetail[] = [
   {
     id: 'legal-metrology-app',
     title: 'Legal Metrology Application',
-    subtitle: 'Digital Inspection & Workflow Management Application',
+    subtitle: 'Digital Inspection & Workflow Requirements Application',
     category: 'Web Application',
     badge: 'Software Application',
     accentColor: '#38BDF8',
     description:
-      'A software application developed around the Legal Metrology domain, designed to support digital verification workflows, inspection scheduling, and structured report management.',
+      'Software application project developed around digital inspection and workflow requirements for a Legal Metrology use case.',
     problem:
       'Physical inspection processes for commercial verification involve paper-heavy records, delayed field reporting, and lack of streamlined tracking for field verification officers.',
     solution:
-      'Engineered an application interface for verification workflows, enabling digital record submission, rule-guided validation, and structured compliance reporting.',
+      'Engineered a software application for verification workflows, enabling digital record submission, rule-guided validation, and structured compliance reporting.',
     architecture:
-      'React Frontend Client → API Routing & Backend Service Layer → Structured Database Storage & Report Generator.',
-    technologies: ['React', 'JavaScript', 'Python', 'APIs', 'HTML5', 'CSS'],
+      'Web Application Frontend → API Routing & Backend Service Layer → Relational SQL Database Storage & Compliance Reporting.',
+    technologies: ['Web Application', 'APIs', 'SQL', 'React', 'JavaScript'],
     keyFeatures: [
       'Digital inspection entry and verification forms',
       'Inspection workflow and task tracking',
@@ -81,20 +81,20 @@ export const projectsData: ProjectDetail[] = [
   },
   {
     id: 'aqua-feed-system',
-    title: 'Aqua Feed Performance Management System',
-    subtitle: 'Aquaculture Operations & Farm Data Management Web Application',
+    title: 'Aqua Feed Performance Management System [on going]',
+    subtitle: 'Aquaculture Farm Operations & Performance Management System',
     category: 'Web Application',
-    badge: 'Application Development',
+    badge: 'On Going Project',
     accentColor: '#00D4FF',
     description:
-      'A practical web application designed to help aquaculture farms organize farmer records, field agent visits, daily feeding schedules, and operational farm data in a unified dashboard.',
+      'Application for aquaculture farm operations and performance management, designed around field data, farm records, monitoring and reporting workflows.',
     problem:
-      'Aquaculture farm management often relies on manual logs and fragmented notes, making it difficult to maintain consistent feeding records, visit logs, and pond tracking across multiple farms.',
+      'Aquaculture farm operations often rely on manual logs and fragmented notes, making it difficult to maintain consistent feeding records, visit logs, and pond tracking across multiple farms.',
     solution:
       'Developed a responsive application with interactive management interfaces for agents and farm coordinators to log visit data, record daily feeding, and monitor pond operational status.',
     architecture:
-      'React Web Interface → API Layer → Relational Database (SQL) for persistent farm records and operational data calculation.',
-    technologies: ['React', 'JavaScript', 'Python', 'APIs', 'SQL', 'HTML5', 'CSS'],
+      'React Web Interface → API Layer → Relational Database (SQL) for persistent farm records and operational performance monitoring.',
+    technologies: ['React', 'JavaScript', 'APIs', 'SQL'],
     keyFeatures: [
       'Agent farm-visit workflow and record logging',
       'Farmer and pond management views',
