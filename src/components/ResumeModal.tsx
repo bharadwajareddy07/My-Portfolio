@@ -184,11 +184,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                       <div className="space-y-2 text-xs">
                         {/* Phone */}
                         <div className="flex items-center justify-between p-2 rounded-lg bg-[#0D1321] border border-[#1E293B]/80">
-                          <div className="min-w-0">
-                            <span className="text-[9px] text-[#64748B] font-mono uppercase block">Phone</span>
-                            <a href={`tel:${phone}`} className="text-[#F8FAFC] hover:text-[#00D4FF] truncate font-medium block">
-                              {phone}
-                            </a>
+                          <div className="flex items-center gap-2 min-w-0">
+                            <Phone className="w-3.5 h-3.5 text-[#2F6BFF] shrink-0" />
+                            <div className="min-w-0">
+                              <span className="text-[9px] text-[#64748B] font-mono uppercase block">Phone</span>
+                              <a href={`tel:${phone}`} className="text-[#F8FAFC] hover:text-[#00D4FF] truncate font-medium block">
+                                {phone}
+                              </a>
+                            </div>
                           </div>
                           <button
                             type="button"
@@ -201,11 +204,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
                         {/* Email */}
                         <div className="flex items-center justify-between p-2 rounded-lg bg-[#0D1321] border border-[#1E293B]/80">
-                          <div className="min-w-0">
-                            <span className="text-[9px] text-[#64748B] font-mono uppercase block">Email</span>
-                            <a href={`mailto:${email}`} className="text-[#F8FAFC] hover:text-[#00D4FF] truncate font-medium text-[11px] block">
-                              {email}
-                            </a>
+                          <div className="flex items-center gap-2 min-w-0">
+                            <Mail className="w-3.5 h-3.5 text-[#00D4FF] shrink-0" />
+                            <div className="min-w-0">
+                              <span className="text-[9px] text-[#64748B] font-mono uppercase block">Email</span>
+                              <a href={`mailto:${email}`} className="text-[#F8FAFC] hover:text-[#00D4FF] truncate font-medium text-[11px] block">
+                                {email}
+                              </a>
+                            </div>
                           </div>
                           <button
                             type="button"
@@ -217,29 +223,35 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                         </div>
 
                         {/* GitHub */}
-                        <div className="p-2 rounded-lg bg-[#0D1321] border border-[#1E293B]/80">
-                          <span className="text-[9px] text-[#64748B] font-mono uppercase block">GitHub</span>
-                          <a
-                            href={githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#F8FAFC] hover:text-[#00D4FF] truncate text-[11px] block font-medium"
-                          >
-                            github.com/bharadwajareddy07
-                          </a>
+                        <div className="flex items-center gap-2 p-2 rounded-lg bg-[#0D1321] border border-[#1E293B]/80">
+                          <Github className="w-3.5 h-3.5 text-[#F8FAFC] shrink-0" />
+                          <div className="min-w-0">
+                            <span className="text-[9px] text-[#64748B] font-mono uppercase block">GitHub</span>
+                            <a
+                              href={githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[#F8FAFC] hover:text-[#00D4FF] truncate text-[11px] block font-medium"
+                            >
+                              github.com/bharadwajareddy07
+                            </a>
+                          </div>
                         </div>
 
                         {/* LinkedIn */}
-                        <div className="p-2 rounded-lg bg-[#0D1321] border border-[#1E293B]/80">
-                          <span className="text-[9px] text-[#64748B] font-mono uppercase block">LinkedIn</span>
-                          <a
-                            href={linkedinUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#F8FAFC] hover:text-[#00D4FF] truncate text-[11px] block font-medium"
-                          >
-                            linkedin.com/in/sai-bharadwajareddy
-                          </a>
+                        <div className="flex items-center gap-2 p-2 rounded-lg bg-[#0D1321] border border-[#1E293B]/80">
+                          <Linkedin className="w-3.5 h-3.5 text-[#00D4FF] shrink-0" />
+                          <div className="min-w-0">
+                            <span className="text-[9px] text-[#64748B] font-mono uppercase block">LinkedIn</span>
+                            <a
+                              href={linkedinUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[#F8FAFC] hover:text-[#00D4FF] truncate text-[11px] block font-medium"
+                            >
+                              linkedin.com/in/sai-bharadwajareddy
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
